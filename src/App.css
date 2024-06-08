@@ -129,6 +129,11 @@
   text-align: center;
 }
 
+.projectend {
+  text-align: center;
+  color: black;
+}
+
 .projectlinks {
   justify-content: center;
   margin-top: 10px;

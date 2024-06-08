@@ -56,6 +56,9 @@ export default function Project() {
                         </div>
                     </div>
                 </div>
+                <h3 className='projectend'>View Other Projects in my
+                    <Link to='https://github.com/Temi-Michael/' target='_blank' className='projectend'> GitHub Profile</Link>
+                </h3>
             </div>
         </div>
     )
