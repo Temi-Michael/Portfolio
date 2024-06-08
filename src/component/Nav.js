@@ -1,9 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { faGithub, faLinkedin, faMedium, faStackOverflow } from '@fortawesome/free-brands-svg-icons'
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
+import { HashLink } from 'react-router-hash-link'
+import React from 'react';
 
-export default function Nav(props) {
+export default function Nav() {
     return (
         <div className="navcover">
             <div className="nav-container">
@@ -39,8 +41,8 @@ export default function Nav(props) {
                     </div>
                     <div className="nav2">
                         <ul className="navlist2">
-                            <li className="listitem2">{props.project}</li>
-                            <li className="listitem2">{props.contact}</li>
+                            <li className="listitem2"><HashLink smooth to='/#project' className="HashLink">Projects</HashLink></li>
+                            <li className="listitem2"><HashLink smooth to='/#contact' className="HashLink">Contact Me</HashLink></li>
                         </ul>
                     </div>
                 </nav>
@@ -48,3 +50,5 @@ export default function Nav(props) {
         </div>
     )
 };
+
+

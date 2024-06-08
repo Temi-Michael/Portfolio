@@ -1,13 +1,27 @@
 {
     "cSpell.words": [
+        "contactframe",
+        "contacthead",
+        "errormsg",
         "fontawesome",
+        "formbody",
+        "Formik",
         "fortawesome",
+        "introcenter",
+        "introframe",
+        "introname",
         "listitem",
         "navcover",
         "navlist",
         "navlogo",
         "profileimg",
         "profileimgframe",
-        "temi"
+        "projectcontainer",
+        "projectframe",
+        "projectheader",
+        "projectimage",
+        "submitbtn",
+        "temi",
+        "webimage"
     ]
 }
