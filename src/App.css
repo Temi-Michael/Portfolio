@@ -126,14 +126,14 @@ a {
     text-transform: uppercase;
     text-decoration: underline;
   }
-  
+
   .projectheading {
     text-align: center;
     font-size: 10px;
     text-transform: capitalize;
     color: black;
   }
-  
+
   .projecttext {
     font-size: 10px;
     color: black;
@@ -152,7 +152,7 @@ a {
     border: 0.5px solid white;
     border-radius: 10px;
   }
-  
+
   .projectlinks {
     justify-content: center;
     margin-top: 10px;
@@ -219,6 +219,32 @@ a {
   margin-bottom: 10px;
   display: flex;
   gap: 20px;
+}
+
+/* PAGINATION */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  align-self: center;
 }
 
 .contactframe {

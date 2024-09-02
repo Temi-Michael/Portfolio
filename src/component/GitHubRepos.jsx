@@ -11,6 +11,8 @@ const GitHubRepos = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [readmeData, setReadmeData] = useState({});
+  const [page, setPage] = useState(1);
+  const [perPage] = useState(8);
 
   useEffect(() => {
     const fetchRepos = async () => {
@@ -48,7 +50,7 @@ const GitHubRepos = () => {
     };
 
     fetchRepos();
-  }, [username, tokenid]);
+  }, [username, tokenid, page, perPage]);
 
   const truncateText = (text, maxLength) => {
     const words = text.split(' ');
@@ -60,40 +62,57 @@ const GitHubRepos = () => {
 
   if (error) return <p>Error: {error}</p>;
 
+  const handleNextPage = () => {
+    setPage(prevPage => prevPage + 1);
+  };
+
+  const handlePreviousPage = () => {
+    setPage(prevPage => (prevPage > 1 ? prevPage - 1 : 1));
+  };
+
   return (
     <div className='projectback'>
       <div className='projectcontainer' id='project'>
         <h2 className="projectheader">{username}'s Repositories</h2>
         <ul>
           <div className='projectframe'>
-              {loading ? (
-                Array(6).fill().map((_, index) => (
-                  <div className='skeleton'>
-                    <li key={index}>
-                      <Skeleton width={200} height={20} />
-                      <Skeleton width={200} height={100} />
-                    </li>
+            {loading ? (
+              Array(6).fill().map((_, index) => (
+                <div className='skeleton'>
+                  <li key={index}>
+                    <Skeleton width={200} height={20} />
+                    <Skeleton width={200} height={100} />
+                  </li>
+                </div>
+              ))
+            ) : (
+              repos.map(repo => (
+                <li key={repo.id}>
+                  <div className='card'>
+                    <h4 className='projectheading'>
+                      <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
+                        {repo.name}
+                      </a>
+                    </h4>
+                    <p className='projecttext'>{readmeData[repo.name]}<b>....</b></p>
+                    <div className='projectlinks'>
+                      <a href={repo.html_url} target='_blank' rel='noopener noreferrer' className='links'>{repo.name}</a>
+                    </div>
                   </div>
-                ))
-              ) : (
-                repos.map(repo => (
-                    <li key={repo.id}>
-                      <div className='card'>
-                        <h4 className='projectheading'>
-                          <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
-                            {repo.name}
-                          </a>
-                        </h4>
-                        <p className='projecttext'>{readmeData[repo.name]}<b>....</b></p>
-                        <div className='projectlinks'>
-                          <a href={repo.html_url} target='_blank' rel='noopener noreferrer' className='links'>{ repo.name }</a>
-                        </div>
-                      </div>
-                    </li>
-                ))
-              )}
+                </li>
+              ))
+            )}
           </div>
         </ul>
+        <div className='pagination'>
+          <button onClick={handlePreviousPage} disabled={page === 1}>
+            Previous
+          </button>
+          <span>Page {page}</span>
+          <button onClick={handleNextPage}>
+            Next
+          </button>
+        </div>
       </div>
     </div>
   );
